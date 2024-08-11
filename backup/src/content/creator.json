@@ -1,0 +1,28 @@
+[
+  {
+    "id": 2,
+    "user_created": "83401baf-f60d-4f71-84b5-3c7c8bcfc506",
+    "date_created": "2024-08-11T14:27:19.290Z",
+    "user_updated": "83401baf-f60d-4f71-84b5-3c7c8bcfc506",
+    "date_updated": "2024-08-11T14:34:46.678Z",
+    "full_name": "Rajan",
+    "number": "7896258858",
+    "mail_id": "creator1@example.com",
+    "about_you": " ",
+    "yt_subscribers": null,
+    "yt_engagement": null,
+    "yt_content_niche": null,
+    "yt_deliverables": null,
+    "yt_details_gender_ratio": null,
+    "yt_details_age_to": null,
+    "yt_details_top_cities": null,
+    "ig_followers": null,
+    "ig_engagement": null,
+    "ig_content_niche": null,
+    "ig_deliverables": null,
+    "ig_details_gender_ratio": null,
+    "ig_details_age_to": null,
+    "ig_details_top_cities": null,
+    "user": "83401baf-f60d-4f71-84b5-3c7c8bcfc506"
+  }
+]

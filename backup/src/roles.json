@@ -1,0 +1,22 @@
+[
+  {
+    "id": "35f96dee-43e2-4bc2-baff-bb7c89a9a440",
+    "name": "creator",
+    "icon": "supervised_user_circle",
+    "description": null,
+    "parent": null,
+    "children": null,
+    "policies": null,
+    "users": null
+  },
+  {
+    "id": "c723d0f6-4cff-4061-beeb-8c241f68deab",
+    "name": "Administrator",
+    "icon": "verified",
+    "description": "$t:admin_description",
+    "parent": null,
+    "children": null,
+    "policies": null,
+    "users": null
+  }
+]
