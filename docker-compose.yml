@@ -1,17 +1,79 @@
 version: "3"
 services:
+
+  # database:
+  #   platform: linux/amd64
+  #   image: mysql:8.0
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   volumes:
+  #     - ./data/database:/var/lib/mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: "rootpassword"
+  #     MYSQL_DATABASE: "directus"
+  #     MYSQL_USER: "directus"
+  #     MYSQL_PASSWORD: "directus"
+
+  sveltekit:
+    platform: linux/amd64
+    build:
+      context: ./sveltekit
+      dockerfile: Dockerfile
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    depends_on:
+      - directus
+    environment:
+      PUBLIC_APIURL: ${API_URL:-http://${SERVER_IP:-localhost}:5173}
+      PUBLIC_COOKIE_NAME: directus
+
+  cache:
+    platform: linux/amd64 
+    image: redis:6
+
+
   directus:
+    platform: linux/amd64 
     image: directus/directus:11.0.1
     ports:
-      - 8055:8055
+      - "${DIRECTUS_PORT:-8055}:8055"
     volumes:
-      - ./data/database:/directus/database
-      - ./data/uploads:/directus/uploads
-      - ./data/extensions:/directus/extensions
+      - ./directus/data/uploads:/directus/uploads
+      - ./directus/data/extensions:/directus/extensions
+      - ./directus/data/database:/directus/database
+    depends_on:
+      - cache
     environment:
-      SECRET: "replace-with-secure-random-value"
-      ADMIN_EMAIL: "admin@example.com"
-      ADMIN_PASSWORD: "Admin@123"
+      SECRET: "${DIRECTUS_SECRET:-replace-with-secure-random-value}"
       DB_CLIENT: "sqlite3"
-      DB_FILENAME: "/directus/database/data.db"
-      WEBSOCKETS_ENABLED: "true"
+      CACHE_AUTO_PURGE: "true"
+      CACHE_STORE: "redis"
+      REDIS: "redis://cache:6379"
+      ADMIN_EMAIL: "${ADMIN_EMAIL:-admin@example.com}"
+      ADMIN_PASSWORD: "${ADMIN_PASSWORD:-Admin@123}"
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://${SERVER_IP:-localhost}:5173}
+      CORS_METHODS: "GET,POST,PATCH,DELETE"
+      CORS_ALLOWED_HEADERS: "Content-Type,Authorization,X-Requested-With"
+      CORS_EXPOSED_HEADERS: "Content-Range,X-Content-Range"
+      CACHE_ENABLED: "false"
+      REFRESH_TOKEN_COOKIE_SAME_SITE: "none"
+      REFRESH_TOKEN_COOKIE_SECURE: "true"
+      PUBLIC_URL: ${PUBLIC_URL:-http://${SERVER_IP:-localhost}:8055}
+
+#   caddy:
+#     image: caddy:2
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - ./Caddyfile:/etc/caddy/Caddyfile
+#       - caddy_data:/data
+#       - caddy_config:/config
+#     depends_on:
+#       - directus
+#       - sveltekit
+
+
+# volumes:
+#   caddy_data:
+#   caddy_config:
