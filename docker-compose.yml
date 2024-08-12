@@ -37,9 +37,9 @@ services:
     ports:
       - "${DIRECTUS_PORT:-8055}:8055"
     volumes:
-      - ./directus/data/uploads:/directus/uploads
-      - ./directus/data/extensions:/directus/extensions
-      - ./directus/data/database:/directus/database
+      - ./data/uploads:/directus/uploads
+      - ./data/extensions:/directus/extensions
+      - ./data/database/data.db:/directus/database/database.sqlite
     depends_on:
       - cache
     environment:
