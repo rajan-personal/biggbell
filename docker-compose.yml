@@ -60,20 +60,20 @@ services:
       REFRESH_TOKEN_COOKIE_SECURE: "true"
       PUBLIC_URL: ${PUBLIC_URL:-http://${SERVER_IP:-localhost}:8055}
 
-#   caddy:
-#     image: caddy:2
-#     ports:
-#       - "80:80"
-#       - "443:443"
-#     volumes:
-#       - ./Caddyfile:/etc/caddy/Caddyfile
-#       - caddy_data:/data
-#       - caddy_config:/config
-#     depends_on:
-#       - directus
-#       - sveltekit
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - directus
+      - sveltekit
 
 
-# volumes:
-#   caddy_data:
-#   caddy_config:
+volumes:
+  caddy_data:
+  caddy_config:
