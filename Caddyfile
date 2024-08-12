@@ -1,5 +1,5 @@
 api.biggbell.mysave.app {
-    reverse_proxy directus:5000
+    reverse_proxy directus:8055
 }
 
 biggbell.mysave.app {
