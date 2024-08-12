@@ -3,5 +3,5 @@ api.biggbell.mysave.app {
 }
 
 biggbell.mysave.app {
-    reverse_proxy frontend:5173
+    reverse_proxy sveltekit:5173
 }
