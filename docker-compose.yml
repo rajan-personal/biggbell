@@ -58,6 +58,7 @@ services:
       CACHE_ENABLED: "false"
       REFRESH_TOKEN_COOKIE_SAME_SITE: "none"
       REFRESH_TOKEN_COOKIE_SECURE: "true"
+      REFRESH_TOKEN_COOKIE_DOMAIN: ${PUBLIC_URL:-http://${SERVER_IP:-localhost}:8055}
       PUBLIC_URL: ${PUBLIC_URL:-http://${SERVER_IP:-localhost}:8055}
 
   caddy:
