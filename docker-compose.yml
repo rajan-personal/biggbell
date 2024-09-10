@@ -13,18 +13,18 @@ services:
   #     MYSQL_USER: "directus"
   #     MYSQL_PASSWORD: "directus"
 
-  sveltekit:
-    platform: linux/amd64
-    build:
-      context: ./sveltekit
-      dockerfile: Dockerfile
-    ports:
-      - "${FRONTEND_PORT:-5173}:5173"
-    depends_on:
-      - directus
-    environment:
-      PUBLIC_APIURL: ${API_URL:-http://${SERVER_IP:-localhost}:5173}
-      PUBLIC_COOKIE_NAME: directus
+  # sveltekit:
+  #   platform: linux/amd64
+  #   build:
+  #     context: ./sveltekit
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "${FRONTEND_PORT:-5173}:5173"
+  #   depends_on:
+  #     - directus
+  #   environment:
+  #     PUBLIC_APIURL: ${API_URL:-http://${SERVER_IP:-localhost}:5173}
+  #     PUBLIC_COOKIE_NAME: directus
 
   cache:
     platform: linux/amd64 
@@ -33,13 +33,14 @@ services:
 
   directus:
     platform: linux/amd64 
-    image: directus/directus:11.0.1
+    image: directus/directus:11.1.0
+    user: "1000:1000"
     ports:
       - "${DIRECTUS_PORT:-8055}:8055"
     volumes:
       - ./data/uploads:/directus/uploads
       - ./data/extensions:/directus/extensions
-      - ./data/database/data.db:/directus/database/database.sqlite
+      - ./data/database:/directus/database
     depends_on:
       - cache
     environment:
@@ -61,20 +62,20 @@ services:
       REFRESH_TOKEN_COOKIE_DOMAIN: ${PUBLIC_URL:-http://${SERVER_IP:-localhost}:8055}
       PUBLIC_URL: ${PUBLIC_URL:-http://${SERVER_IP:-localhost}:8055}
 
-  caddy:
-    image: caddy:2
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - directus
-      - sveltekit
+#   caddy:
+#     image: caddy:2
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - ./Caddyfile:/etc/caddy/Caddyfile
+#       - caddy_data:/data
+#       - caddy_config:/config
+#     depends_on:
+#       - directus
+#       - sveltekit
 
 
-volumes:
-  caddy_data:
-  caddy_config:
+# volumes:
+#   caddy_data:
+#   caddy_config:
