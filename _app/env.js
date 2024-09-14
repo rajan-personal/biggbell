@@ -1,0 +1,1 @@
+export const env={"PUBLIC_DIRECTUS_URL":"http://localhost:8055"}
