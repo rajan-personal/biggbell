@@ -93,4 +93,17 @@
   </div>
 </div>
 
-<Reels />
+<Reels reels={[    
+  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+]} />

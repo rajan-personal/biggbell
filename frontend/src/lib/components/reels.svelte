@@ -2,10 +2,9 @@
   import { onMount } from "svelte";
 
   // Data structure for reels
-  const reels = [
+  export let reels = [
     { url: "https://www.instagram.com/reel/C__IRmENL68/" },
     { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
-    // Add more reels as needed
   ];
 
   onMount(() => {
