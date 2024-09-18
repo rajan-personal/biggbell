@@ -21,6 +21,20 @@
         YouTube channel 'BB Ki Vines', where he posts short comedy sketches and videos. He has a huge
         fan following on social media and is considered one of the most influential personalities in
         India.`,
+    reels: [    
+      { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+      { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+      { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+      { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+      { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+      { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+      { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+      { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+      { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+      { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+      { url: "https://www.instagram.com/reel/C__IRmENL68/" },
+      { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
+    ]
   };
 </script>
 
@@ -93,17 +107,4 @@
   </div>
 </div>
 
-<Reels reels={[    
-  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
-  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
-  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
-  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
-  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
-  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
-  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
-  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
-  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
-  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
-  { url: "https://www.instagram.com/reel/C__IRmENL68/" },
-  { url: "https://www.instagram.com/reel/C-DJ76rpWna/" },
-]} />
+<Reels reels={profileData.reels} />
